@@ -43,8 +43,8 @@ contract MyIncrediblePsychicAbilities{
     function rightGuess(address _victim) public {
         uint256 blockValue = uint256(blockhash(block.number.sub(1))); 
         uint256 coinFlip = blockValue.div(FACTOR);
-        victim = CoinFlip(_victim);
         bool side = coinFlip == 1 ? true : false;
+        victim = CoinFlip(_victim);
         victim.flip(side);
 
   } 
