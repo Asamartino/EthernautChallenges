@@ -46,6 +46,5 @@ contract MyIncrediblePsychicAbilities{
         bool side = coinFlip == 1 ? true : false;
         victim = CoinFlip(_victim);
         victim.flip(side);
-
-  } 
+    } 
 }
