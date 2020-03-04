@@ -1,6 +1,6 @@
 Instructions used in the console:
 	await contract.owner()
-  player
+        player
 	await contract.contributions(player)
 	await contract.contribute({value:1})
 	await contract.contributions(player)
