@@ -1,3 +1,4 @@
 # EthernautChallenges
-The following are the solutions to the Ethernaut Challenges. For more information you can have a look at the videos.
+The following are the solutions to the Ethernaut Challenges. For a detailed walkthrough please have a look at the videos :
+https://www.youtube.com/channel/UCCk-bj8IXoWDLzu7Hjf3GLQ
 
