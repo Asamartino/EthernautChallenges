@@ -1,3 +1,5 @@
+// In order to solve this level, deploy the contract TelephoneAttack and call the function NoThisIsPatrick with your instance address as input
+
 pragma solidity ^0.6.3;
 
 contract Telephone {
