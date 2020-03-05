@@ -1,3 +1,5 @@
+// In order to solve this level, deploy the contract MyIncrediblePsychicAbilities and call the function rightGuess with your instance address as input
+
 pragma solidity ^0.6.3;
 
 import 'https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/math/SafeMath.sol';
