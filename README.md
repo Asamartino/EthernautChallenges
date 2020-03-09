@@ -42,3 +42,21 @@ was deprecated and is not allowed anymore in version 0.5.0.”* p. 110
 
 In this contract, the constructor syntax is deprecated and misspelled (fal1out written with the number 1 instead of 
 the letter l). Therefore, to claim ownership of this contract you just need to call the fal1out() function.
+
+
+
+## Level 3 Tokent:
+Solidity documentation release 0.6.4 :<br/>
+*“A blockchain is a globally shared, transactional database. This means that everyone can read entries in the database
+just by participating in the network”* p. 10<br/>
+*“Everything you use in a smart contract is publicly visible, even local variables and state variables marked private.
+Using random numbers in smart contracts is quite tricky if you do not want miners to be able to cheat.”* p. 153
+
+Ethereum Yellow paper:
+“Providing random numbers within a deterministic system is, naturally, an impossible task. However, we can 
+approximate with pseudo-random numbers by utilising data which is generally unknowable at the time of transacting.
+Such data might include the block’s hash, the block’s timestamp and the block’s beneficiary address”.
+
+In this case, the block number is knowable at the time of transacting. Thus, we can create a contract that 
+computes the right guess and use this value to call the flip function of the CoinFlip contract (before a new block
+gets mined). Therefore, we are able to guess the right outcome everytime.
