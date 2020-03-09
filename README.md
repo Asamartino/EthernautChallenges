@@ -12,8 +12,8 @@ Here are some useful links:
 * [Ethereum Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf)
 
 
-#Solution:
-##Level 1:
+# Solution:
+## Level 1:
 Solution:
 Solidity documentation release 0.6.4 :
 "A contract can have at most one fallback function, declared using fallback () external [payable] (without the function
