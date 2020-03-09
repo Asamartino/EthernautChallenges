@@ -43,8 +43,6 @@ was deprecated and is not allowed anymore in version 0.5.0.”* p. 110
 In this contract, the constructor syntax is deprecated and misspelled (fal1out written with the number 1 instead of 
 the letter l). Therefore, to claim ownership of this contract you just need to call the fal1out() function.
 
-
-
 ### Level 3 Token:
 Solidity documentation release 0.6.4 :<br/>
 *“A blockchain is a globally shared, transactional database. This means that everyone can read entries in the database
@@ -56,3 +54,21 @@ Ethereum Yellow paper:<br/>
 *“Providing random numbers within a deterministic system is, naturally, an impossible task. However, we can approximate with pseudo-random numbers by utilising data which is generally unknowable at the time of transacting. Such data might include the block’s hash, the block’s timestamp and the block’s beneficiary address”.*
 
 In this case, the block number is knowable at the time of transacting. Thus, we can create a contract (Level3_CoinFlipSolution.sol) that computes the right guess and use this value to call the flip function of the CoinFlip contract (before a new block gets mined). Therefore, we are able to guess the right outcome everytime.
+
+### Level 4 Telephone:
+Solidity documentation release 0.6.4 :<br/>
+*“msg.sender (address payable): sender of the message (current call)”* p. 73<br/>
+*“tx.origin (address payable): sender of the transaction (full call chain)”*p. 73 
+
+In other words, tx.origin is the original address that sends a transaction while msg.sender is the current (i.e. last, closest) sender of a message. For instance, assume user/contract A calls contract B which triggers it to call contract C which triggers it to call contract D, we have the following: 
+
+
+
+
+
+
+
+
+
+
+To solve this level, we (the user) will call the function of a malicious contract that will call the changeOwner function of the Telephone contract. Thus, for the Telephone contract: tx.origin (= user’s address)  ≠ msg.sender (= malicious contract’s address). This will allow us to pass the if statement and become the new owner of the contract. 
