@@ -3,7 +3,7 @@ The following are the solutions to the Ethernaut Challenges. For a detailed walk
 https://www.youtube.com/channel/UCCk-bj8IXoWDLzu7Hjf3GLQ
 
 As mentioned in the Solidity documentation : "When deploying contracts, you should use the latest released version of Solidity. This is because breaking changes as well as new features and bug fixes are introduced regularly."
--> please try to use the latest version
+-> please use the latest version.
 
 Here are some useful links:
 * [Nicole Zhu's Walkthrough](https://hackernoon.com/ethernaut-lvl-0-walkthrough-abis-web3-and-how-to-abuse-them-d92a8842d71b)
@@ -20,7 +20,7 @@ Solidity documentation release 0.6.4 :<br/>
 *"msg.value (uint): number of wei sent with the message"* p. 73
 
 In the case of this contract, in order to execute the fallback function we need to pass the required condition: 
-require (msg.value > 0 && contributions[msg.sender] > 0). Therefore, before calling the fallback function with an amount attached to it, we also need to increase our contributions (using the contribute() function). Once that’s done we will become the new owner of the contract. We can then use the withdraw() function to reduce its balance to 0.
+*require (msg.value > 0 && contributions[msg.sender] > 0)* . Therefore, before calling the fallback function with an amount attached to it, we also need to increase our contributions (using the *contribute* function). Once that’s done we will become the new owner of the contract. We can then use the withdraw() function to reduce its balance to 0.
 
 We will solve this challenge using the following command in the console (can be access by clicking F12):<br/>
 *await contract.owner()*<br/>
@@ -41,7 +41,7 @@ creation, and where you can run contract initialisation code."* p. 110 <br/>
 was deprecated and is not allowed anymore in version 0.5.0.”* p. 110
 
 In this contract, the constructor syntax is deprecated and misspelled (fal1out written with the number 1 instead of 
-the letter l). Therefore, to claim ownership of this contract you just need to call the fal1out() function.
+the letter l). Therefore, to claim ownership of this contract you just need to call the *fal1out* function.
 
 ### Level 3 Token:
 Solidity documentation release 0.6.4 :<br/>
@@ -53,18 +53,18 @@ Using random numbers in smart contracts is quite tricky if you do not want miner
 Ethereum Yellow paper:<br/>
 *“Providing random numbers within a deterministic system is, naturally, an impossible task. However, we can approximate with pseudo-random numbers by utilising data which is generally unknowable at the time of transacting. Such data might include the block’s hash, the block’s timestamp and the block’s beneficiary address”.*
 
-In this case, the block number is knowable at the time of transacting. Thus, we can create a contract (Level3_CoinFlipSolution.sol) that computes the right guess and use this value to call the flip function of the CoinFlip contract (before a new block gets mined). Therefore, we are able to guess the right outcome everytime.
+In this case, the block number is knowable at the time of transacting. Thus, we can create a contract (Level3_CoinFlipSolution.sol) that computes the right guess and use this value to call the *flip* function of the CoinFlip contract (before a new block gets mined). Therefore, we are able to guess the right outcome everytime.
 
 ### Level 4 Telephone:
 Solidity documentation release 0.6.4 :<br/>
 *“msg.sender (address payable): sender of the message (current call)”* p. 73<br/>
 *“tx.origin (address payable): sender of the transaction (full call chain)”* p. 73 
 
-In other words, tx.origin is the original address that sends a transaction while msg.sender is the current (i.e. last, closest) sender of a message. For instance, assume user/contract A calls contract B which triggers it to call contract C which triggers it to call contract D, we have the following: 
+In other words, *tx.origin* is the original address that sends a transaction while *msg.sender* is the current (i.e. last, closest) sender of a message. For instance, assume user/contract A calls contract B which triggers it to call contract C which triggers it to call contract D, we have the following: 
 
 ![tel_graph2](https://user-images.githubusercontent.com/61462365/76195000-a9109f80-61e7-11ea-81ab-585464e51b3d.png)
 
-To solve this level, we (the user) will call the function of a malicious contract (Level4_TelephoneSolution.sol) that will call the *changeOwner* function of the Telephone contract. Thus, for the Telephone contract: tx.origin (= user’s address)  ≠ msg.sender (= malicious contract’s address). This will allow us to pass the if statement and become the new owner of the contract. 
+To solve this level, we (the user) will call the function of a malicious contract (Level4_TelephoneSolution.sol) that will call the *changeOwner* function of the Telephone contract. Thus, for the Telephone contract: *tx.origin* (= user’s address)  *≠* *msg.sender* (= malicious contract’s address). This will allow us to pass the if statement and become the new owner of the contract. 
 
 ### Level 5 Token:
 Solidity documentation release 0.6.4 :<br/>
