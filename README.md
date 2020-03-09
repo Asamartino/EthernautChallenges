@@ -12,8 +12,8 @@ Here are some useful links:
 * [Ethereum Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf)
 
 
-# Solution:
-## Level 1 Fallback:
+## Solution:
+### Level 1 Fallback:
 Solidity documentation release 0.6.4 :<br/>
 *"A contract can have at most one fallback function, declared using fallback () external [payable] (without the function keyword). This function cannot have arguments, cannot return anything and must have external visibility. It is executed on a call to the contract if none of the other functions match the given function signature, or if no data was supplied at all and there is no receive Ether function. The fallback function always receives data, but in order to also receive Ether it must be marked payable."* p. 99
 
@@ -33,7 +33,7 @@ We will solve this challenge using the following command in the console (can be 
 *player*<br/>
 *await contract.withdraw()*<br/>
 
-## Level 2 Fallout:
+### Level 2 Fallout:
 Solidity documentation release 0.6.4 :<br/>
 *"A constructor is an optional function declared with the constructor keyword which is executed upon contract 
 creation, and where you can run contract initialisation code."* p. 110 <br/>
@@ -45,7 +45,7 @@ the letter l). Therefore, to claim ownership of this contract you just need to c
 
 
 
-## Level 3 Token:
+### Level 3 Token:
 Solidity documentation release 0.6.4 :<br/>
 *“A blockchain is a globally shared, transactional database. This means that everyone can read entries in the database
 just by participating in the network”* p. 10<br/>
