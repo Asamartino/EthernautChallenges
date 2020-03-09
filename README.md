@@ -20,12 +20,7 @@ Solidity documentation release 0.6.4 :
 "msg.value (uint): number of wei sent with the message" p. 73
 
 In the case of this contract, in order to execute the fallback function we need to pass the required condition: 
-require (msg.value > 0 && contributions[msg.sender] > 0)
- 
-Therefore, before calling the fallback function with an amount attached to it, we also need to increase our 
-contributions (using the contribute() function). Once that’s done we will become the new owner of the contract. 
-We can then use the withdraw() function to reduce its balance to 0.
-
+require (msg.value > 0 && contributions[msg.sender] > 0). Therefore, before calling the fallback function with an amount attached to it, we also need to increase our contributions (using the contribute() function). Once that’s done we will become the new owner of the contract. We can then use the withdraw() function to reduce its balance to 0.
 We will solve this challenge using the following command in the console (can be access by clickin F12):<br/>
 *await contract.owner()*<br/>
 *player*<br/>
