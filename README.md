@@ -27,7 +27,7 @@ contributions (using the contribute() function). Once that’s done we will beco
 We can then use the withdraw() function to reduce its balance to 0.
 
 We will solve this challenge using the following command in the console (can be access by clickin F12):<br/>
-        *await contract.owner()*<br/>
+*        await contract.owner()*<br/>
         *player*<br/>
 	*await contract.contributions(player)*<br/>
 	*await contract.contribute({value:1})*<br/>
