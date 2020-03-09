@@ -76,7 +76,7 @@ works:
 
 ![Explanation2](https://user-images.githubusercontent.com/61462365/76195124-e9701d80-61e7-11ea-8102-d60b79b4b89b.png)
 
-To solve this level we will perform an underflow by using the transfer function with the following two inputs: another address (than the one we are currently using) and a number bigger than 20 (= amount of tokens given). We used the following command in the console:<br/>
+To solve this level we will perform an underflow by using the *transfer* function with the following two inputs: another address (than the one we are currently using) and a number bigger than 20 (= amount of tokens given). We used the following command in the console:<br/>
 *await contract.balanceOf(player)* <br/>
 *await contract.transfer("0x6E0B06770144b7b5923f3d759C19E1938Fe67807", 21)* <br/>
 *await contract.balanceOf(player)* <br/>
