@@ -36,7 +36,7 @@ We will solve this challenge using the following command in the console (can be 
 ## Level 2 Fallout:
 Solidity documentation release 0.6.4 :<br/>
 *"A constructor is an optional function declared with the constructor keyword which is executed upon contract 
-creation, and where you can run contract initialisation code."* p. 110
+creation, and where you can run contract initialisation code."* p. 110 <br/>
 *“Prior to version 0.4.22, constructors were defined as functions with the same name as the contract. This syntax 
 was deprecated and is not allowed anymore in version 0.5.0.”* p. 110
 
