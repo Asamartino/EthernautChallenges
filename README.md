@@ -54,7 +54,7 @@ Using random numbers in smart contracts is quite tricky if you do not want miner
 Ethereum Yellow paper:<br/>
 *“Providing random numbers within a deterministic system is, naturally, an impossible task. However, we can approximate with pseudo-random numbers by utilising data which is generally unknowable at the time of transacting. Such data might include the block’s hash, the block’s timestamp and the block’s beneficiary address”.*
 
-In this case, the block number is knowable at the time of transacting. Thus, we can create a contract (Level3_CoinFlipSolution.sol) that computes the right guess and use this value to call the *flip* function of the CoinFlip contract (before a new block gets mined). Therefore, we are able to guess the right outcome everytime.
+In this case, the block number is knowable at the time of transacting. Thus, we can create a malicious contract (Level3_CoinFlipSolution.sol) that computes the right guess and use this value to call the *flip* function of the CoinFlip contract (before a new block gets mined). Therefore, we are able to guess the right outcome everytime.
 
 ### Level 4 Telephone:
 Solidity documentation release 0.6.4 :<br/>
