@@ -26,7 +26,7 @@ Therefore, before calling the fallback function with an amount attached to it, w
 contributions (using the contribute() function). Once that’s done we will become the new owner of the contract. 
 We can then use the withdraw() function to reduce its balance to 0.
 
-We will solve this challenge using the following command in the console (can be access by clickin F12):
+We will solve this challenge using the following command in the console (can be access by clickin F12):<br/>
         *await contract.owner()*<br/>
         *player*<br/>
 	*await contract.contributions(player)*<br/>
