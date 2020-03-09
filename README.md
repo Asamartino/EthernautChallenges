@@ -65,3 +65,19 @@ In other words, tx.origin is the original address that sends a transaction while
 ![tel_graph2](https://user-images.githubusercontent.com/61462365/76195000-a9109f80-61e7-11ea-81ab-585464e51b3d.png)
 
 To solve this level, we (the user) will call the function of a malicious contract that will call the changeOwner function of the Telephone contract. Thus, for the Telephone contract: tx.origin (= user’s address)  ≠ msg.sender (= malicious contract’s address). This will allow us to pass the if statement and become the new owner of the contract. 
+
+### Level 5 Token:
+Solidity documentation release 0.6.4 :<br/>
+*“As in many programming languages, Solidity’s integer types are not actually integers. They resemble integers when the values are small, but behave differently if the numbers are larger. For example, the following is true: uint8(255)+ uint8(1) == 0.  This situation is called an overflow.  It occurs when an operation is performed that requires a fixed size variable to store a number (or piece of data) that is outside the range of the variable’s data type. An underflow is the converse situation:uint8(0) - uint8(1) == 255”* p. 156<br/>
+
+As suggested by the level, it’s similar to how an odometer (instrument measuring the distance traveled by a vehicle)
+works:
+
+![Explanation2](https://user-images.githubusercontent.com/61462365/76195124-e9701d80-61e7-11ea-8102-d60b79b4b89b.png)
+
+To solve this level we will perform an underflow by using the transfer function with the following two inputs: another address (than the one we are currently using) and a number bigger than 20 (= amount of tokens given). We used the following command in the console:<br/>
+*await contract.balanceOf(player)* <br/>
+*await contract.transfer("0x6E0B06770144b7b5923f3d759C19E1938Fe67807", 21)* <br/>
+*await contract.balanceOf(player)* <br/>
+
+
