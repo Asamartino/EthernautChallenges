@@ -58,7 +58,7 @@ In this case, the block number is knowable at the time of transacting. Thus, we 
 ### Level 4 Telephone:
 Solidity documentation release 0.6.4 :<br/>
 *“msg.sender (address payable): sender of the message (current call)”* p. 73<br/>
-*“tx.origin (address payable): sender of the transaction (full call chain)”*p. 73 
+*“tx.origin (address payable): sender of the transaction (full call chain)”* p. 73 
 
 In other words, tx.origin is the original address that sends a transaction while msg.sender is the current (i.e. last, closest) sender of a message. For instance, assume user/contract A calls contract B which triggers it to call contract C which triggers it to call contract D, we have the following: 
 
