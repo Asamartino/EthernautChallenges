@@ -8,14 +8,14 @@ contract ShutUpAndTakeMyMoney{
         owner = _owner;
     }
      
-    function destroy() public{  //this conctract need to have a positive balance -> can do that by inputing a value in remix at deployement 
+    function destroy() public{  //before calling this function, add money to this contract (either at deployment or with the giveMeMoney function) call setOwner with as input your instance address
         selfdestruct(owner);
     }
     
-    constructor() public payable{ // used so we can use the Value filed of RemixIDE and send Ether at creation of the contract
+    constructor() public payable{ //use the Value filed of RemixIDE to send Ether at creation of the contract
     }
   
-    function giveMeMoney() public payable{ //to send money if you didn't send it at initiation
+    function giveMeMoney() public payable{ //use the Value field to send money (if you didn't send any at initiation)
     
     }
 
