@@ -8,7 +8,7 @@ contract ShutUpAndTakeMyMoney{
         owner = _owner;
     }
      
-    function destroy() public{  //before calling this function, add money to this contract (either at deployment or with the giveMeMoney function) call setOwner with as input your instance address
+    function destroy() public{  //before calling this function: 1) add money to this contract (either at deployment or with the giveMeMoney function) 2) call setOwner with as input your instance address
         selfdestruct(owner);
     }
     
