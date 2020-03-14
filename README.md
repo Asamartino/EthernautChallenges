@@ -10,6 +10,7 @@ Here are some useful links:
 * [OpenZeppelin Forum](https://forum.openzeppelin.com/t/ethernaut-community-solutions/561)
 * [Solidity documentation](https://solidity.readthedocs.io/en/latest/)
 * [Ethereum Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf)
+* [Mastering Ethereum](https://github.com/ethereumbook/ethereumbook)
 
 
 ## Solution:
@@ -81,4 +82,37 @@ To solve this level we will perform an underflow by using the *transfer* functio
 *await contract.transfer("0x6E0B06770144b7b5923f3d759C19E1938Fe67807", 21)* <br/>
 *await contract.balanceOf(player)* <br/>
 
+### Level 6 Delegation:
+
+### Level 7 Force:
+Solidity documentation release 0.6.4 :<br/>
+“A contract without a receive Ether function can receive Ether as a recipient of a coinbase transaction (aka miner 
+block reward) or as a destination of a selfdestruct. A contract cannot react to such Ether transfers and thus also 
+cannot reject them. This is a design choice of the EVM and Solidity cannot work around it.” p. 99<br/>
+
+To solve this level we will deploy a malicious contract (Level7_Force.sol) and send some fund to it. Then, we will designate the Force contract as owner of the malicious contract and destroy our malicious contract. Thus, sending fund to the Force 
+contract that cannot be rejected.
+
+
+### Level 8 Vault:
+Solidity documentation release 0.6.4 :<br/>
+“Everything that is inside a contract is visible to all observers external to the blockchain. Making something private
+only prevents other contracts from reading or modifying the information, but it will still be visible to the whole world 
+outside of the blockchain.” p. 90<br/>
+
+“Even if a contract is removed by “selfdestruct”, it is still part of the history of the blockchain and probably retained 
+by most Ethereum nodes. So, using “selfdestruct” is not the same as deleting data from a hard disk.” p. 14<br/>
+
+“Statically-sized variables (everything except mapping and dynamically-sized array types) are laid out contiguously in
+storage starting from position 0. Multiple, contiguous items that need less than 32 bytes are packed into a single 
+storage slot if possible [...] ”. p. 123<br/>
+
+Everything you use in a smart contract is publicly visible. Moreover, keep in mind that a blockchain is an append-only
+ledger. If you change the state of your contract or even destroy it, it will still be part of the history of the blockchain. 
+Thus, everyone could access it.
+
+To solve this level we will unlock the vault by using the function unlock with the value of password as argument. 
+To get the value of password we need to access the state and get the value stored at slot 1 (slot 0 contains the bool 
+value).
+### Level 9 King:
 
