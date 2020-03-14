@@ -83,6 +83,25 @@ To solve this level we will perform an underflow by using the *transfer* functio
 *await contract.balanceOf(player)* <br/>
 
 ### Level 6 Delegation:
+Solidity documentation release 0.6.4 :<br/>
+“There exists a special variant of a message call, named delegatecall which is identical to a message call apart from 
+the fact that the code at the target address is executed in the context of the calling contract and msg.sender and
+msg.value do not change their values. This means that a contract can dynamically load code from a different address 
+at runtime.  Storage, current address and balance still refer to the calling contract, only the code is taken from the 
+called address. This makes it possible to implement the “library” feature in Solidity:  Reusable library code that can be
+applied to a contract’s storage, e.g. in order to implement a complex data structure” p. 13<br/>
+“The first four bytes of the call data for a function call specifies the function to be called. It is the first (left, high-order in big-endian) four bytes of the Keccak-256 (SHA-3) hash of the signature of the function. The signature is defined as 
+the canonical expression of the basic prototype without data location specifier” p. 179  <br/>
+“Any interaction with another contract imposes a potential danger, especially if the source code of the contract  
+is not known in advance.” p. 78<br/>
+
+In other words, by using a delegatecall you let another contract’s code run inside the calling contract. This code is 
+executed using the calling contract state (i.e. data, variables) and can potentially modify it. It’s a double-edged sword. 
+See next slide for an example.
+
+To solve this level we will use the pwn function in the context of the Delegation contract by using a delegatecall
+(located in its fallback function). In order to precisely call the pwn function, we need to pass its function signature 
+(i.e. first four bytes of the Keccak-256 hash). 
 
 ### Level 7 Force:
 Solidity documentation release 0.6.4 :<br/>
