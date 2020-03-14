@@ -97,11 +97,15 @@ is not known in advance.” p. 78<br/>
 
 In other words, by using a delegatecall you let another contract’s code run inside the calling contract. This code is 
 executed using the calling contract state (i.e. data, variables) and can potentially modify it. It’s a double-edged sword. 
-See next slide for an example.
+Here is an example:
+
+![Explanation2](https://user-images.githubusercontent.com/61462365/76687833-f77acf80-6627-11ea-9839-da28720ee233.png)
 
 To solve this level we will use the pwn function in the context of the Delegation contract by using a delegatecall
 (located in its fallback function). In order to precisely call the pwn function, we need to pass its function signature 
 (i.e. first four bytes of the Keccak-256 hash). 
+
+
 
 ### Level 7 Force:
 Solidity documentation release 0.6.4 :<br/>
