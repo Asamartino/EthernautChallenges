@@ -143,7 +143,7 @@ by the receiving account. The transfer function reverts on failure. Note: If x i
 “Any interaction with another contract imposes a potential danger, especially if the source code of the contract  
 is not known in advance.” p. 78<br/>
 
-In order to solve this level we first need to become the new King by sending an amount >= 1 Ether. Secondly, we must
+In order to solve this level we first need to become the new King by sending an amount >= 1 Ether. Then, we must
 prevent others of dethroning us by forcing the transfer function to revert. This can be implemented in several ways. 
 We will create a malicious contract (Level9_King.sol) with a fallback function that will revert anytime it’s called.
 
