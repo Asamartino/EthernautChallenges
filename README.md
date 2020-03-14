@@ -99,20 +99,18 @@ Solidity documentation release 0.6.4 :<br/>
 “Everything that is inside a contract is visible to all observers external to the blockchain. Making something private
 only prevents other contracts from reading or modifying the information, but it will still be visible to the whole world 
 outside of the blockchain.” p. 90<br/>
-
 “Even if a contract is removed by “selfdestruct”, it is still part of the history of the blockchain and probably retained 
 by most Ethereum nodes. So, using “selfdestruct” is not the same as deleting data from a hard disk.” p. 14<br/>
-
 “Statically-sized variables (everything except mapping and dynamically-sized array types) are laid out contiguously in
 storage starting from position 0. Multiple, contiguous items that need less than 32 bytes are packed into a single 
 storage slot if possible [...] ”. p. 123<br/>
 
-Everything you use in a smart contract is publicly visible. Moreover, keep in mind that a blockchain is an append-only
-ledger. If you change the state of your contract or even destroy it, it will still be part of the history of the blockchain. 
-Thus, everyone could access it.
-
+Everything you use in a smart contract is publicly visible. Moreover, keep in mind that a blockchain is an **append-only
+ledger**. If you change the state of your contract or even destroy it, it will still be part of the history of the blockchain. 
+Thus, everyone can have access to it. <br/>
 To solve this level we will unlock the vault by using the function unlock with the value of password as argument. 
 To get the value of password we need to access the state and get the value stored at slot 1 (slot 0 contains the bool 
 value).
+
 ### Level 9 King:
 
