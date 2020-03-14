@@ -12,6 +12,7 @@ Here are some useful links:
 * [Ethereum Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf)
 * [Mastering Ethereum](https://github.com/ethereumbook/ethereumbook)
 
+All the comments I made are subject to my own interpretation of how things work. Please feel free to contact me if something is not clear to you or needs to be corrected
 
 ## Solution:
 ### Level 1 Fallback:
