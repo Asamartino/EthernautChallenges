@@ -137,7 +137,7 @@ To get the value of password we need to access the state and get the value store
 value).
 
 ### Level 9 King:<br/>
-Solidity documentation release 0.6.4 :
+Solidity documentation release 0.6.4 :<br/>
 “The transfer function fails if the balance of the current contract is not large enough or if the Ether transfer is rejected
 by the receiving account. The transfer function reverts on failure. Note: If x is a contract address, its code (more specifically:  its Receive Ether Function, if present, or otherwise its Fallback Function, if present) will be executed together with the transfer call (this is a feature of the EVM and cannot  be prevented). If that execution runs out of gas or fails in any way, the Ether transfer will be reverted and the current contract will stop with an exception.” p. 49-50<br/>
 “Any interaction with another contract imposes a potential danger, especially if the source code of the contract  
