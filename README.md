@@ -108,9 +108,19 @@ storage slot if possible [...] ”. p. 123<br/>
 Everything you use in a smart contract is publicly visible. Moreover, keep in mind that a blockchain is an **append-only
 ledger**. If you change the state of your contract or even destroy it, it will still be part of the history of the blockchain. 
 Thus, everyone can have access to it. <br/>
+
 To solve this level we will unlock the vault by using the function unlock with the value of password as argument. 
 To get the value of password we need to access the state and get the value stored at slot 1 (slot 0 contains the bool 
 value).
 
-### Level 9 King:
+### Level 9 King:<br/>
+Solidity documentation release 0.6.4 :
+“The transfer function fails if the balance of the current contract is not large enough or if the Ether transfer is rejected
+by the receiving account. The transfer function reverts on failure. Note: If x is a contract address, its code (more specifically:  its Receive Ether Function, if present, or otherwise its Fallback Function, if present) will be executed together with the transfer call (this is a feature of the EVM and cannot  be prevented). If that execution runs out of gas or fails in any way, the Ether transfer will be reverted and the current contract will stop with an exception.” p. 49-50<br/>
+“Any interaction with another contract imposes a potential danger, especially if the source code of the contract  
+is not known in advance.” p. 78<br/>
+
+In order to solve this level we first need to become the new King by sending an amount >= 1 Ether. Secondly, we must
+prevent others of dethroning us by forcing the transfer function to revert. This can be implemented in several ways. 
+We will create a malicious contract (Level9_King.sol) with a fallback function that will revert anytime it’s called.
 
