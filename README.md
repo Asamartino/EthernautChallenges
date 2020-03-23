@@ -150,4 +150,13 @@ We will create a malicious contract (Level9_King.sol) with a fallback function t
 
 ### Level 10 Re-entrancy:<br/>
 Solidity documentation release 0.6.4 :<br/>
+“You should avoid using .call() whenever possible when executing another contract function as it bypasses type 
+checking, function existence check, and argument packing.” p. 76 <br/>
+“Any interaction with another contract imposes a potential danger, especially if the source code of the contract  
+is not known in advance. The current contract hands over control to the called contract and that may potentially do 
+just about anything.” p. 78
 
+In order to solve this level we will create a malicious contract with a fallback function that calls back the withdraw 
+function. Thus, this will prevent the withdraw function completion until all the contract funds are drained (as shown 
+below). Before calling the withdraw function we need to increase the balance of our malicious contract (by using 
+the donate function of the Reentrance contract).
