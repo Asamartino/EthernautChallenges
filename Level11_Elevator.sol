@@ -20,7 +20,7 @@ contract Elevator {
   }
 }
 
-contract Elevator2{
+contract MaliciousElevator{
     Elevator elevator;
     bool public switcher = true; 
     
