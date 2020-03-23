@@ -42,7 +42,6 @@ contract Elevator2{
             switcher = true;
             return true;
         }
-        
     }  
     
 }
