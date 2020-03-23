@@ -28,7 +28,7 @@ contract Elevator2{
         elevator = Elevator(_elevator);
     }
     
-    function letMego() public{
+    function toTheTop() public{
         elevator.goTo(1);
     }
     
