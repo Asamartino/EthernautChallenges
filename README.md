@@ -148,3 +148,6 @@ In order to solve this level we first need to become the new King by sending an 
 prevent others of dethroning us by forcing the transfer function to revert. This can be implemented in several ways. 
 We will create a malicious contract (Level9_King.sol) with a fallback function that will revert anytime it’s called.
 
+### Level 10 Re-entrancy:<br/>
+Solidity documentation release 0.6.4 :<br/>
+
