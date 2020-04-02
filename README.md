@@ -85,16 +85,16 @@ To solve this level we will perform an underflow by using the *transfer* functio
 
 ### Level 6 Delegation:
 Solidity documentation release 0.6.4 :<br/>
-“There exists a special variant of a message call, named delegatecall which is identical to a message call apart from 
+*“There exists a special variant of a message call, named delegatecall which is identical to a message call apart from 
 the fact that the code at the target address is executed in the context of the calling contract and msg.sender and
 msg.value do not change their values. This means that a contract can dynamically load code from a different address 
 at runtime.  Storage, current address and balance still refer to the calling contract, only the code is taken from the 
 called address. This makes it possible to implement the “library” feature in Solidity:  Reusable library code that can be
-applied to a contract’s storage, e.g. in order to implement a complex data structure” p. 13<br/>
-“The first four bytes of the call data for a function call specifies the function to be called. It is the first (left, high-order in big-endian) four bytes of the Keccak-256 (SHA-3) hash of the signature of the function. The signature is defined as 
-the canonical expression of the basic prototype without data location specifier” p. 179  <br/>
-“Any interaction with another contract imposes a potential danger, especially if the source code of the contract  
-is not known in advance.” p. 78<br/>
+applied to a contract’s storage, e.g. in order to implement a complex data structure”* p. 13<br/>
+*“The first four bytes of the call data for a function call specifies the function to be called. It is the first (left, high-order in big-endian) four bytes of the Keccak-256 (SHA-3) hash of the signature of the function. The signature is defined as 
+the canonical expression of the basic prototype without data location specifier”* p. 179  <br/>
+*“Any interaction with another contract imposes a potential danger, especially if the source code of the contract  
+is not known in advance.”* p. 78<br/>
 
 In other words, by using a delegatecall you let another contract’s code run inside the calling contract. This code is 
 executed using the calling contract state (i.e. data, variables) and can potentially modify it. It’s a double-edged sword. 
@@ -110,9 +110,9 @@ To solve this level we will use the pwn function in the context of the Delegatio
 
 ### Level 7 Force:
 Solidity documentation release 0.6.4 :<br/>
-“A contract without a receive Ether function can receive Ether as a recipient of a coinbase transaction (aka miner 
+*“A contract without a receive Ether function can receive Ether as a recipient of a coinbase transaction (aka miner 
 block reward) or as a destination of a selfdestruct. A contract cannot react to such Ether transfers and thus also 
-cannot reject them. This is a design choice of the EVM and Solidity cannot work around it.” p. 99<br/>
+cannot reject them. This is a design choice of the EVM and Solidity cannot work around it.”* p. 99<br/>
 
 To solve this level we will deploy a malicious contract (Level7_Force.sol) and send some fund to it. Then, we will designate the Force contract as owner of the malicious contract and destroy our malicious contract. Thus, sending fund to the Force 
 contract that cannot be rejected.
@@ -120,14 +120,14 @@ contract that cannot be rejected.
 
 ### Level 8 Vault:
 Solidity documentation release 0.6.4 :<br/>
-“Everything that is inside a contract is visible to all observers external to the blockchain. Making something private
+*“Everything that is inside a contract is visible to all observers external to the blockchain. Making something private
 only prevents other contracts from reading or modifying the information, but it will still be visible to the whole world 
-outside of the blockchain.” p. 90<br/>
-“Even if a contract is removed by “selfdestruct”, it is still part of the history of the blockchain and probably retained 
-by most Ethereum nodes. So, using “selfdestruct” is not the same as deleting data from a hard disk.” p. 14<br/>
-“Statically-sized variables (everything except mapping and dynamically-sized array types) are laid out contiguously in
+outside of the blockchain.”* p. 90<br/>
+*“Even if a contract is removed by “selfdestruct”, it is still part of the history of the blockchain and probably retained 
+by most Ethereum nodes. So, using “selfdestruct” is not the same as deleting data from a hard disk.”* p. 14<br/>
+*“Statically-sized variables (everything except mapping and dynamically-sized array types) are laid out contiguously in
 storage starting from position 0. Multiple, contiguous items that need less than 32 bytes are packed into a single 
-storage slot if possible [...] ”. p. 123<br/>
+storage slot if possible [...] ”.* p. 123<br/>
 
 Everything you use in a smart contract is publicly visible. Moreover, keep in mind that a blockchain is an **append-only
 ledger**. If you change the state of your contract or even destroy it, it will still be part of the history of the blockchain. 
@@ -139,10 +139,10 @@ value).
 
 ### Level 9 King:<br/>
 Solidity documentation release 0.6.4 :<br/>
-“The transfer function fails if the balance of the current contract is not large enough or if the Ether transfer is rejected
-by the receiving account. The transfer function reverts on failure. Note: If x is a contract address, its code (more specifically:  its Receive Ether Function, if present, or otherwise its Fallback Function, if present) will be executed together with the transfer call (this is a feature of the EVM and cannot  be prevented). If that execution runs out of gas or fails in any way, the Ether transfer will be reverted and the current contract will stop with an exception.” p. 49-50<br/>
-“Any interaction with another contract imposes a potential danger, especially if the source code of the contract  
-is not known in advance.” p. 78<br/>
+*“The transfer function fails if the balance of the current contract is not large enough or if the Ether transfer is rejected
+by the receiving account. The transfer function reverts on failure. Note: If x is a contract address, its code (more specifically:  its Receive Ether Function, if present, or otherwise its Fallback Function, if present) will be executed together with the transfer call (this is a feature of the EVM and cannot  be prevented). If that execution runs out of gas or fails in any way, the Ether transfer will be reverted and the current contract will stop with an exception.”* p. 49-50<br/>
+*“Any interaction with another contract imposes a potential danger, especially if the source code of the contract  
+is not known in advance.”* p. 78<br/>
 
 In order to solve this level we first need to become the new King by sending an amount >= 1 Ether. Then, we must
 prevent others of dethroning us by forcing the transfer function to revert. This can be implemented in several ways. 
@@ -150,11 +150,11 @@ We will create a malicious contract (Level9_King.sol) with a fallback function t
 
 ### Level 10 Re-entrancy:<br/>
 Solidity documentation release 0.6.4 :<br/>
-“You should avoid using .call() whenever possible when executing another contract function as it bypasses type 
-checking, function existence check, and argument packing.” p. 76 <br/>
-“Any interaction with another contract imposes a potential danger, especially if the source code of the contract  
+*“You should avoid using .call() whenever possible when executing another contract function as it bypasses type 
+checking, function existence check, and argument packing.”* p. 76 <br/>
+*“Any interaction with another contract imposes a potential danger, especially if the source code of the contract  
 is not known in advance. The current contract hands over control to the called contract and that may potentially do 
-just about anything.” p. 78<br/>
+just about anything.”* p. 78<br/>
 <br/>
 In order to solve this level we will create a malicious contract with a fallback function that calls back the withdraw 
 function. Thus, this will prevent the withdraw function completion until all the contract funds are drained (as shown 
@@ -165,10 +165,10 @@ the donate function of the Reentrance contract).
 
 ### Level 11 Elevator:<br/>
 Solidity documentation release 0.6.4 :<br/>
-“Interfaces are similar to abstract contracts, but they cannot have any functions implemented.” p. 113
-“All functions declared in interfaces are implicitly virtual, which means that they can be overridden. This does
+*“Interfaces are similar to abstract contracts, but they cannot have any functions implemented.”* p. 113
+*“All functions declared in interfaces are implicitly virtual, which means that they can be overridden. This does
 not automatically mean that an overriding function can be overridden again  - this is only possible if the 
-overriding function is marked virtual.” p. 114 <br/>
+overriding function is marked virtual.”* p. 114 <br/>
 
 To solve this level we will create a malicious contract that will implement the isLastFloor function. Then we 
 will invoke the goTo function from the malicious contract. This will ensure that it’s the isLastFloor function 
@@ -178,12 +178,12 @@ second time it’s called (to change the boolean top value to true).
 
 ### Level 12 Privacy:<br/>
 Solidity documentation release 0.6.4 :<br/>
-“Everything that is inside a contract is visible to all observers external to the blockchain. Making something private
+*“Everything that is inside a contract is visible to all observers external to the blockchain. Making something private
 only prevents other contracts from reading or modifying the information, but it will still be visible to the whole world 
-outside of the blockchain.” p. 90<br/>
-“Statically-sized variables (everything except mapping and dynamically-sized array types) are laid out contiguously in
+outside of the blockchain.”* p. 90<br/>
+*“Statically-sized variables (everything except mapping and dynamically-sized array types) are laid out contiguously in
 storage starting from position 0. Multiple, contiguous items that need less than 32 bytes are packed into a single 
-storage slot if possible [...]”. p. 123<br/>
+storage slot if possible [...]”*. p. 123<br/>
 
 This level is similar to level 8 Vault. Remember that all on-chain data are publicly visible (marking them private only
 makes them inaccessible to other contracts). Please have a look at Nicole Zhu’s walkthrough in order to gain more 
