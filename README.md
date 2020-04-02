@@ -197,10 +197,10 @@ Note that: <br/>
 
 ### Level 13 Gatekeeper One :<br/>
 To solve this level we need to call the enter function and pass the conditions of each function modifier. To pass:
-     *gateOne: we will create a malicious contract with a function letMeIn that calls the enter function of the 
+     - gateOne: we will create a malicious contract with a function letMeIn that calls the enter function of the 
                         Gatekeeper contract. By calling letMeIn in Remix-IDE tx.origin ≠ msg.sender (see solution of 
                         level 4 Telephone for more details).
-     *gateTwo: to see the remaining gas we can use the functionality of Remix-IDE. The value we are looking for will be 
+     - gateTwo: to see the remaining gas we can use the functionality of Remix-IDE. The value we are looking for will be 
                         shown after the opcode GAS, i.e. in the opcode PUSH2 (see picture below). Knowing this value we could
                         add the proper gas amount to our call in order to pass gateTwo. However, as mentioned by Spalladino,  
                         the proper gas offset to use will vary depending on the compiler. We will use his solution in our 
