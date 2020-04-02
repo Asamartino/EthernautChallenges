@@ -190,8 +190,8 @@ makes them inaccessible to other contracts). Please have a look at Nicole Zhu’
 insight on how variables are stored. To unlock this contract, we need to use the unlock function with an input equal 
 to bytes16(data[2]) which is the first 16 bytes stored at slot 5 (as seen on the next slide). 
 Note that: <br/>
-⋅⋅⋅ - bytes32 takes the same amount of storage as uint256; (2^8)^32 = 2^256.<br/> 
-⋅⋅⋅ -in the video I was able to input a bytes32 instead of a bytes16 as expected by the unlock function. This might be due to the contract's ABI that truncates the input. <br/>
+* bytes32 takes the same amount of storage as uint256; (2^8)^32 = 2^256.<br/> 
+* in the video I was able to input a bytes32 instead of a bytes16 as expected by the unlock function. This might be due to the contract's ABI that truncates the input. <br/>
 
 ![storage](https://user-images.githubusercontent.com/61462365/78298851-6bc3d700-7533-11ea-904b-7dfed78239b8.png)
 
