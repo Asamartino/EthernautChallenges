@@ -165,9 +165,35 @@ the donate function of the Reentrance contract).
 
 ### Level 11 Elevator:<br/>
 Solidity documentation release 0.6.4 :<br/>
+“Interfaces are similar to abstract contracts, but they cannot have any functions implemented.” p. 113
+“All functions declared in interfaces are implicitly virtual, which means that they can be overridden. This does
+not automatically mean that an overriding function can be overridden again  - this is only possible if the 
+overriding function is marked virtual.” p. 114 <br/>
+
+To solve this level we will create a malicious contract that will implement the isLastFloor function. Then we 
+will invoke the goTo function from the malicious contract. This will ensure that it’s the isLastFloor function 
+from the malicious contract that will be used.<br/>
+The isLastFloor function needs to return false the first time it’s called (to pass the if statement) and true the 
+second time it’s called (to change the boolean top value to true).
 
 ### Level 12 Privacy:<br/>
 Solidity documentation release 0.6.4 :<br/>
+“Everything that is inside a contract is visible to all observers external to the blockchain. Making something private
+only prevents other contracts from reading or modifying the information, but it will still be visible to the whole world 
+outside of the blockchain.” p. 90<br/>
+“Statically-sized variables (everything except mapping and dynamically-sized array types) are laid out contiguously in
+storage starting from position 0. Multiple, contiguous items that need less than 32 bytes are packed into a single 
+storage slot if possible [...]”. p. 123<br/>
+
+This level is similar to level 8 Vault. Remember that all on-chain data are publicly visible (marking them private only
+makes them inaccessible to other contracts). Please have a look at Nicole Zhu’s walkthrough in order to gain more 
+insight on how variables are stored. To unlock this contract, we need to use the unlock function with an input equal 
+to bytes16(data[2]) which is the first 16 bytes stored at slot 5 (as seen on the next slide). 
+Note that: <br/>
+      * bytes32 takes the same amount of storage as uint256; (2^8)^32 = 2^256.<br/> 
+      * in the video I was able to input a bytes32 instead of a bytes16 as expected by the unlock function. This might be
+        due to the contract's ABI that truncates the input. <br/>
+
 
 ### Level 13 Gatekeeper One :<br/>
 To solve this level we need to call the enter function and pass the conditions of each function modifier. To pass:
