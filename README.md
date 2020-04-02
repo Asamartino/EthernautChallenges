@@ -193,6 +193,8 @@ Note that: <br/>
 ⋅⋅⋅ - bytes32 takes the same amount of storage as uint256; (2^8)^32 = 2^256.<br/> 
 ⋅⋅⋅ -in the video I was able to input a bytes32 instead of a bytes16 as expected by the unlock function. This might be due to the contract's ABI that truncates the input. <br/>
 
+![storage](https://user-images.githubusercontent.com/61462365/78298851-6bc3d700-7533-11ea-904b-7dfed78239b8.png)
+
 
 ### Level 13 Gatekeeper One :<br/>
 To solve this level we need to call the enter function and pass the conditions of each function modifier. To pass:
@@ -205,5 +207,6 @@ To solve this level we need to call the enter function and pass the conditions o
                         the proper gas offset to use will vary depending on the compiler. We will use his solution in our 
                         malicious contract and brute-force a range of possible gas values. To account for it, we will increase the gas limit in Remix-IDE.
 
+![RemainingGas2](https://user-images.githubusercontent.com/61462365/78298883-7aaa8980-7533-11ea-9ce5-c6851eabd908.png)
 
 
