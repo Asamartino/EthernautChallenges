@@ -163,3 +163,13 @@ the donate function of the Reentrance contract).
 
 ![reentrance](https://user-images.githubusercontent.com/61462365/77301685-6921e000-6cf0-11ea-90be-f94aac620b29.png)
 
+### Level 11 Elevator:<br/>
+Solidity documentation release 0.6.4 :<br/>
+
+### Level 12 Privacy:<br/>
+Solidity documentation release 0.6.4 :<br/>
+
+### Level 13 Gatekeeper One :<br/>
+
+
+
