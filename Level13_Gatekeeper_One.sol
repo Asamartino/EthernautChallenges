@@ -32,7 +32,7 @@ contract GatekeeperOne {
 
 contract AreYouTheKeymaster{
     using SafeMath for uint256;
-    bytes8 txOrigin16 = 0x024647a51303b0F4; //last 16 digits of your account
+    bytes8 txOrigin16 = 0x0123456789abcdef; //last 16 digits of your account
     bytes8 key = txOrigin16 & 0xFFFFFFFF0000FFFF; 
     GatekeeperOne public gkpOne;
 
