@@ -172,9 +172,7 @@ overriding function is marked virtual.”* p. 114 <br/>
 
 To solve this level we will create a malicious contract that will implement the *isLastFloor* function. Then we 
 will invoke the *goTo* function from the malicious contract. This will ensure that it’s the *isLastFloor* function 
-from the malicious contract that will be used.<br/>
-The *isLastFloor* function needs to return false the first time it’s called (to pass the if statement) and true the 
-second time it’s called (to change the boolean top value to true).
+from the malicious contract that will be used.The *isLastFloor* function needs to return false the first time it’s called (to pass the if statement) and true the second time it’s called (to change the boolean top value to true).
 
 ### Level 12 Privacy:<br/>
 Solidity documentation release 0.6.4 :<br/>
