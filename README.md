@@ -209,11 +209,11 @@ Solidity documentation release 0.6.5:<br/>
 - gateThree:<br/>
     - 1st condition: the last 8 hex need to be equal to the last 4 hex -> only possible if we mask part of *_gateKey* with 0, so that: 0x0000???? = 0x????. <br/>
     - 2nd condition: is achieved if the rest of the key is different from 0 so that  0x0000????  ≠  0x????????0000????<br/>
-    - 3rd condition: 0x0000???? needs to be equal to the last 4 hex of tx.origin<br/>
+    - 3rd condition: 0x0000???? needs to be equal to the last 4 hex of *tx.origin*<br/>
 We will create a variable to store the key. One possible solution is to use the value of *tx.origin* and only mask part of it with 0 (as described in the 1st condition).<br/>
  
 In summary, we will create a malicious contract in Remix-IDE that calls the *enter* function of the Gatekeeper contract 
 (thus passing gateOne). We will append a gas value to our call that will vary in order to brute force gateTwo (using 
-[Spalladino’s solution](https://github.com/OpenZeppelin/ethernaut/blob/solidity-05/contracts/attacks/GatekeeperOneAttack.sol)). Finally, we will pass to our call a parameter made by masking part or the value of *tx.origin*.
+[Spalladino’s solution](https://github.com/OpenZeppelin/ethernaut/blob/solidity-05/contracts/attacks/GatekeeperOneAttack.sol)). Finally, we will pass to our call a parameter made by masking part or the value of *tx.origin* (in order to pass gateThree).
 
 
