@@ -185,7 +185,7 @@ storage slot if possible [...]”*. p. 123<br/>
 This level is similar to level 8 Vault. Remember that all on-chain data are publicly visible (marking them private only
 makes them inaccessible to other contracts). Please have a look at [Nicole Zhu’s walkthrough](https://medium.com/coinmonks/ethernaut-lvl-12-privacy-walkthrough-how-ethereum-optimizes-storage-to-save-space-and-be-less-c9b01ec6adb6) in order to gain more 
 insight on how variables are stored. This [article](https://programtheblockchain.com/posts/2018/03/09/understanding-ethereum-smart-contract-storage/) by Steve Marx is also very helpful. To unlock this contract, we need to use the *unlock* function with an input equal 
-to bytes16(data[2]) which is the first 16 bytes stored at slot 5 (as seen on the next slide). 
+to bytes16(data[2]) which is the first 16 bytes stored at slot 5 (as seen below). 
 Note that: <br/>
 - bytes32 takes the same amount of storage as uint256; (2^8)^32 = 2^256.<br/> 
 - in the video I was able to input a bytes32 instead of a bytes16 as expected by the unlock function. This might be due to the contract's ABI that truncates the input. <br/>
@@ -214,6 +214,6 @@ We will create a variable to store the key. One possible solution is to use the 
  
 In summary, we will create a malicious contract in Remix-IDE that calls the *enter* function of the Gatekeeper contract 
 (thus passing gateOne). We will append a gas value to our call that will vary in order to brute force gateTwo (using 
-[Spalladino’s solution](https://github.com/OpenZeppelin/ethernaut/blob/solidity-05/contracts/attacks/GatekeeperOneAttack.sol). Finally, we will pass to our call a parameter made by masking part or the value of *tx.origin*.
+[Spalladino’s solution](https://github.com/OpenZeppelin/ethernaut/blob/solidity-05/contracts/attacks/GatekeeperOneAttack.sol)). Finally, we will pass to our call a parameter made by masking part or the value of *tx.origin*.
 
 
