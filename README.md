@@ -171,8 +171,7 @@ not automatically mean that an overriding function can be overridden again  - th
 overriding function is marked virtual.”* p. 114 <br/>
 
 To solve this level we will create a malicious contract that will implement the *isLastFloor* function. Then we 
-will invoke the *goTo* function from the malicious contract. This will ensure that it’s the *isLastFloor* function 
-from the malicious contract that will be used.The *isLastFloor* function needs to return false the first time it’s called (to pass the if statement) and true the second time it’s called (to change the boolean top value to true).
+will invoke the *goTo* function from the malicious contract. This will ensure that it’s the *isLastFloor* function from the malicious contract that will be used. The *isLastFloor* function needs to return false the first time it’s called (to pass the if statement) and true the second time it’s called (to change the boolean top value to true).
 
 ### Level 12 Privacy:<br/>
 Solidity documentation release 0.6.4 :<br/>
@@ -184,7 +183,7 @@ storage starting from position 0. Multiple, contiguous items that need less than
 storage slot if possible [...]”*. p. 123<br/>
 
 This level is similar to level 8 Vault. Remember that all on-chain data are publicly visible (marking them private only
-makes them inaccessible to other contracts). Please have a look at Nicole Zhu’s walkthrough in order to gain more 
+makes them inaccessible to other contracts). Please have a look at [Nicole Zhu’s walkthrough](https://medium.com/coinmonks/ethernaut-lvl-12-privacy-walkthrough-how-ethereum-optimizes-storage-to-save-space-and-be-less-c9b01ec6adb6) in order to gain more 
 insight on how variables are stored. This [article](https://programtheblockchain.com/posts/2018/03/09/understanding-ethereum-smart-contract-storage/) by Steve Marx is also very helpful. To unlock this contract, we need to use the *unlock* function with an input equal 
 to bytes16(data[2]) which is the first 16 bytes stored at slot 5 (as seen on the next slide). 
 Note that: <br/>
