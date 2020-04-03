@@ -204,3 +204,18 @@ To solve this level we need to call the enter function and pass the conditions o
 ![RemainingGas2](https://user-images.githubusercontent.com/61462365/78298883-7aaa8980-7533-11ea-9ce5-c6851eabd908.png)
 
 
+Solidity documentation release 0.6.5:<br/>
+*“If an integer is explicitly converted to a smaller type, higher-order bits are cut off:*<br/>
+     *uint32a = 0x12345678;*<br/>
+    *uint16b = uint16(a); // b will be 0x5678 now ”* p. 71<br/>
+- gateThree:<br/>
+- 1st condition: the last 8 hex need to be equal to the last 4 hex -> only possible if we mask part of *_gateKey* with 0, so that: 0x0000???? = 0x????. <br/>
+- 2nd condition: is achieved if the rest of the key is not masked by 0 so that  0x0000????  ≠  0x????????0000????<br/>
+- 3rd condition: 0x0000???? needs to be equal to the last 4 hex of tx.origin<br/>
+We will create a variable to store the key. One possible solution is to use the value of tx.origin and only mask part of it with 0 (as described in the 1st condition).<br/>
+ 
+In summary, we will create a malicious contract in Remix-IDE that calls the enter function of the Gatekeeper contract 
+(thus passing gateOne). We will append a gas value to our call that will vary in order to brute force gateTwo (using 
+Spalladino’s solution). Finally, we will pass to our call a parameter made by masking part or the value of tx.origin.
+
+
