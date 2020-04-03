@@ -187,7 +187,7 @@ storage slot if possible [...]”*. p. 123<br/>
 
 This level is similar to level 8 Vault. Remember that all on-chain data are publicly visible (marking them private only
 makes them inaccessible to other contracts). Please have a look at Nicole Zhu’s walkthrough in order to gain more 
-insight on how variables are stored. To unlock this contract, we need to use the unlock function with an input equal 
+insight on how variables are stored. This [article](https://programtheblockchain.com/posts/2018/03/09/understanding-ethereum-smart-contract-storage/) by Steve Marx is also very helpful. To unlock this contract, we need to use the unlock function with an input equal 
 to bytes16(data[2]) which is the first 16 bytes stored at slot 5 (as seen on the next slide). 
 Note that: <br/>
 - bytes32 takes the same amount of storage as uint256; (2^8)^32 = 2^256.<br/> 
@@ -199,23 +199,23 @@ Note that: <br/>
 ### Level 13 Gatekeeper One :<br/>
 To solve this level we need to call the enter function and pass the conditions of each function modifier. To pass:<br/>
 - gateOne: we will create a malicious contract with a function letMeIn that calls the enter function of the Gatekeeper contract. By calling letMeIn in Remix-IDE tx.origin ≠ msg.sender (see solution of level 4 Telephone for more details).<br/>
-- gateTwo: to see the remaining gas we can use the functionality of Remix-IDE. The value we are looking for will be shown after the opcode GAS, i.e. in the opcode PUSH2 (see picture below). Knowing this value we could add the proper gas amount to our call in order to pass gateTwo. However, as mentioned by Spalladino, the proper gas offset to use will vary depending on the compiler. We will use his solution in our malicious contract and brute-force a range of possible gas values. To account for it, we will increase the gas limit in Remix-IDE.<br/>
+- gateTwo: to see the remaining gas we can use the functionality of Remix-IDE. The value we are looking for will be shown after the opcode GAS, i.e. in the opcode PUSH2 (see picture below). Knowing this value we could add the proper gas amount to our call in order to pass gateTwo. However, as mentioned by [Spalladino](https://github.com/OpenZeppelin/ethernaut/blob/solidity-05/contracts/attacks/GatekeeperOneAttack.sol), the proper gas offset to use will vary depending on the compiler. We will use his solution in our malicious contract and brute-force a range of possible gas values. To account for it, we will increase the gas limit in Remix-IDE.<br/>
 
 ![RemainingGas2](https://user-images.githubusercontent.com/61462365/78298883-7aaa8980-7533-11ea-9ce5-c6851eabd908.png)
 
-
+To learn more about opcode, please have a look at [this article](https://blog.openzeppelin.com/deconstructing-a-solidity-contract-part-i-introduction-832efd2d7737/) from Alejandro Santander in collaboration with Leo Arias: 
 Solidity documentation release 0.6.5:<br/>
 *“If an integer is explicitly converted to a smaller type, higher-order bits are cut off:*<br/>
      *uint32a = 0x12345678;*<br/>
     *uint16b = uint16(a); // b will be 0x5678 now ”* p. 71<br/>
 - gateThree:<br/>
-- 1st condition: the last 8 hex need to be equal to the last 4 hex -> only possible if we mask part of *_gateKey* with 0, so that: 0x0000???? = 0x????. <br/>
-- 2nd condition: is achieved if the rest of the key is not masked by 0 so that  0x0000????  ≠  0x????????0000????<br/>
-- 3rd condition: 0x0000???? needs to be equal to the last 4 hex of tx.origin<br/>
-We will create a variable to store the key. One possible solution is to use the value of tx.origin and only mask part of it with 0 (as described in the 1st condition).<br/>
+    - 1st condition: the last 8 hex need to be equal to the last 4 hex -> only possible if we mask part of *_gateKey* with 0, so that: 0x0000???? = 0x????. <br/>
+    - 2nd condition: is achieved if the rest of the key is not masked by 0 so that  0x0000????  ≠  0x????????0000????<br/>
+    - 3rd condition: 0x0000???? needs to be equal to the last 4 hex of tx.origin<br/>
+We will create a variable to store the key. One possible solution is to use the value of *tx.origin* and only mask part of it with 0 (as described in the 1st condition).<br/>
  
 In summary, we will create a malicious contract in Remix-IDE that calls the enter function of the Gatekeeper contract 
 (thus passing gateOne). We will append a gas value to our call that will vary in order to brute force gateTwo (using 
-Spalladino’s solution). Finally, we will pass to our call a parameter made by masking part or the value of tx.origin.
+Spalladino’s solution). Finally, we will pass to our call a parameter made by masking part or the value of *tx.origin*.
 
 
