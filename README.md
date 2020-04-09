@@ -218,10 +218,10 @@ In summary, we will create a malicious contract in Remix-IDE that calls the *ent
 
 ### Level 14 Gatekeeper Two :<br/>
 Solidity documentation release 0.6.5:<br/>
-“extcodesize(a): size of the code at address a” p. 209<br/>
-“^ (bitwise exclusive or)” p. 46<br/>
+*“extcodesize(a): size of the code at address a”* p. 209<br/>
+*“^ (bitwise exclusive or)”* p. 46<br/>
 Ethereum Yellow Paper (section 7, as suggested by this level):<br/>
-“Note that while the initialisation code is executing, the newly created address exists but with no intrinsic body code (during initialization code execution, EXTCODESIZE on the address should return zero).”<br/>
+*“Note that while the initialisation code is executing, the newly created address exists but with no intrinsic body code (during initialization code execution, EXTCODESIZE on the address should return zero).”*<br/>
 
 To pass:<br/>
      - gateOne:  as with Gatekeeper One, we will create a malicious contract with a function letMeIn that calls the enter function of the Gatekeeper contract. By calling letMeIn in Remix-IDE tx.origin ≠ msg.sender (see solution of level 4 Telephone for more details).<br/>
@@ -232,7 +232,7 @@ In summary, we will create a malicious contract in Remix-IDE with a function let
 
 ### Level 15 Naught Coin :<br/>
 Solidity documentation release 0.6.5:<br/>
-“Solidity supports multiple inheritance including polymorphism. [...] Polymorphism means that a function call (internal and external) always executes the function of the same name (and parameter types) in the most derived contract in the inheritance hierarchy. This has to be explicitly enabled on each function in the hierarchy using the virtual and override keywords. [...] Use ’is’ to derive from another contract. Derived contracts can access all non-private members including internal functions and state variables” p.105 -106<br/>
+*“Solidity supports multiple inheritance including polymorphism. [...] Polymorphism means that a function call (internal and external) always executes the function of the same name (and parameter types) in the most derived contract in the inheritance hierarchy. This has to be explicitly enabled on each function in the hierarchy using the virtual and override keywords. [...] Use ’is’ to derive from another contract. Derived contracts can access all non-private members including internal functions and state variables”* p.105 -106<br/>
 
 The contract we are given inherits from the ERC20 contract and only overrides the transfer function. It turns out that other functions from the ERC20 contract are available to us. Thus, we can use some of them to bypass the constraints imposed by the overridden transfer function. <br/>
 Note that:<br/>
