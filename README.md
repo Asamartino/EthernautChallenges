@@ -226,7 +226,7 @@ Ethereum Yellow Paper (section 7, as suggested by this level):<br/>
 To pass:<br/>
 - gateOne:  as with Gatekeeper One, we will create a malicious contract with a function *letMeIn* that calls the *enter* function of the Gatekeeper contract. By calling *letMeIn* in Remix-IDE *tx.origin ≠ msg.sender* (see solution of level 4 Telephone for more details).<br/>
 - gateTwo:  the size of the code at the caller address needs to be equal to 0. This can be achieved by placing the *letMeIn* function inside the constructor of the malicious contract. <br/>
-- gateThree: by modifying this equation: a^b = c  -> a^(a^b) = a^c   ->  0^b = a^c  ->  b = a^c Knowing a and c we can thus easily compute b.<br/>
+- gateThree: by modifying this equation: a^b = c  -> a^(a^b) = a^c   ->  0^b = a^c  ->  b = a^c <br/> Knowing a and c we can thus easily compute b.<br/>
 
 In summary, we will create a malicious contract in Remix-IDE with a function *letMeIn* that will call the enter function of the Gatekeeper contract (thus passing gateOne). By placing the *letMeIn* function inside the constructor of our malicious contract, we will satisfy the requirement of gateTwo. Finally, by passing as parameter the result of *uint64(bytes8(keccak256(abi.encodePacked(address(this))))) ^ (uint64(0) - 1)*  we will pass gateThree.  <br/>
 
