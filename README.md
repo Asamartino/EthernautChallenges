@@ -217,5 +217,33 @@ In summary, we will create a malicious contract in Remix-IDE that calls the *ent
 [Spalladino’s solution](https://github.com/OpenZeppelin/ethernaut/blob/solidity-05/contracts/attacks/GatekeeperOneAttack.sol)). Finally, we will pass to our call a parameter made by masking part or the value of *tx.origin* (in order to pass gateThree).
 
 ### Level 14 Gatekeeper Two :<br/>
+Solidity documentation release 0.6.5:<br/>
+“extcodesize(a): size of the code at address a” p. 209<br/>
+“^ (bitwise exclusive or)” p. 46<br/>
+Ethereum Yellow Paper (section 7, as suggested by this level):<br/>
+“Note that while the initialisation code is executing, the newly created address exists but with no intrinsic body code (during initialization code execution, EXTCODESIZE on the address should return zero).”<br/>
 
+To pass:<br/>
+     - gateOne:  as with Gatekeeper One, we will create a malicious contract with a function letMeIn that calls the enter function of the Gatekeeper contract. By calling letMeIn in Remix-IDE tx.origin ≠ msg.sender (see solution of level 4 Telephone for more details).<br/>
+     - gateTwo:  the size of the code at the caller address needs to be equal to 0. This can be achieved by placing the letMeIn function inside the constructor of the malicious contract. <br/>
+     - gateThree: by modifying this equation: a^b = c  -> a^(a^b) = a^c   ->  0^b = a^c  ->  b = a^c Knowing a and c we can thus easily compute b.<br/>
 
+In summary, we will create a malicious contract in Remix-IDE with a function letMeIn that will call the enter function of the Gatekeeper contract (thus passing gateOne). By placing the letMeIn function inside the constructor of our malicious contract, we will satisfy the requirement of gateTwo. Finally, by passing as parameter the result of uint64(bytes8(keccak256(abi.encodePacked(address(this))))) ^ (uint64(0) - 1)  we will pass gateThree.  <br/>
+
+### Level 15 Naught Coin :<br/>
+Solidity documentation release 0.6.5:<br/>
+“Solidity supports multiple inheritance including polymorphism. [...] Polymorphism means that a function call (internal and external) always executes the function of the same name (and parameter types) in the most derived contract in the inheritance hierarchy. This has to be explicitly enabled on each function in the hierarchy using the virtual and override keywords. [...] Use ’is’ to derive from another contract. Derived contracts can access all non-private members including internal functions and state variables” p.105 -106<br/>
+
+The contract we are given inherits from the ERC20 contract and only overrides the transfer function. It turns out that other functions from the ERC20 contract are available to us. Thus, we can use some of them to bypass the constraints imposed by the overridden transfer function. <br/>
+Note that:<br/>
+      - before using the transferFrom function we need to increase our allowance using the increaseAllowance function <br/>
+      - we will have to do some workaround due to some issues with web3.js when dealing with big numbers <br/>
+
+Instructions used:
+*await contract.balanceOf(player)*
+*(await contract.balanceOf(player)).toString()*
+*await contract.increaseAllowance(player, "1000000000000000000000000")*
+*await contract.transferFrom (player, "another_address" , "1000000000000000000000000")* // replace another_address by another address -_-
+*(await contract.balanceOf(player)).toString()*
+      
+### Level 16 Preservation :<br/>
