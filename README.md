@@ -201,7 +201,7 @@ To pass:<br/>
 
 ![RemainingGas2](https://user-images.githubusercontent.com/61462365/78298883-7aaa8980-7533-11ea-9ce5-c6851eabd908.png)
 
-To learn more about opcode, please have a look at [this article](https://blog.openzeppelin.com/deconstructing-a-solidity-contract-part-i-introduction-832efd2d7737/) from Alejandro Santander in collaboration with Leo Arias: <br/>
+To learn more about opcode, please have a look at [this article](https://blog.openzeppelin.com/deconstructing-a-solidity-contract-part-i-introduction-832efd2d7737/) from Alejandro Santander in collaboration with Leo Arias. <br/>
 Solidity documentation release 0.6.5:<br/>
 *“If an integer is explicitly converted to a smaller type, higher-order bits are cut off:*<br/>
      *uint32a = 0x12345678;*<br/>
