@@ -247,3 +247,10 @@ Instructions used:<br/>
 *(await contract.balanceOf(player)).toString()*<br/>
       
 ### Level 16 Preservation :<br/>
+To pass this level you will have to use the knowledge you’ve acquired from Ethernaut level 6 and 12.<br/> 
+In particular how:<br/>
+- delegatecall works and <br/>
+- how statically-sized variables (everything except mapping and dynamically-sized array types) are laid out in storage<br/>
+
+The function *setFirstTime* executes a delegatecall to the function *setTime* of LibraryContract. Namely, *setTime* will be
+executed in the context of the Preservation contract, i.e. it will modify slot n°0 (*timeZone1Library*) of the Preservation contract with the argument you provide. Therefore, you could change this address with the address of a malicious contract. Thus, when you call *setFristTime* again, the function *setTime* of your malicious contract will be executed in the context of the Preservation contract. By writing this function such that it modifies its slot n°2, you could in the context of the Preservation contract modify the *owner* variable (and claim ownership of this contract).
