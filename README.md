@@ -204,8 +204,8 @@ To pass:<br/>
 To learn more about opcode, please have a look at [this article](https://blog.openzeppelin.com/deconstructing-a-solidity-contract-part-i-introduction-832efd2d7737/) from Alejandro Santander in collaboration with Leo Arias. <br/>
 Solidity documentation release 0.6.5:<br/>
 *“If an integer is explicitly converted to a smaller type, higher-order bits are cut off:*<br/>
-     *uint32a = 0x12345678;*<br/>
-    *uint16b = uint16(a); // b will be 0x5678 now ”* p. 71<br/>
+     *uint32 a = 0x12345678;*<br/>
+    *uint16 b = uint16(a); // b will be 0x5678 now ”* p. 71<br/>
 - gateThree:<br/>
     - 1st condition: the last 8 hex need to be equal to the last 4 hex -> only possible if we mask part of *_gateKey* with 0, so that: 0x0000???? = 0x????. <br/>
     - 2nd condition: is achieved if the rest of the key is different from 0 so that  0x0000????  ≠  0x????????0000????<br/>
