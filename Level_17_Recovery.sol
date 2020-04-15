@@ -35,11 +35,11 @@ contract SimpleToken {
 
 contract Destroy{
     address payable receiver = msg.sender;
-    SimpleToken killMe;
+    SimpleToken killMeplease;
     
     function selfDestruct(address payable _addr) public{
-        killMe = SimpleToken(_addr);
-        killMe.destroy(receiver);
+        killMeplease = SimpleToken(_addr);
+        killMeplease.destroy(receiver);
     }
     
 }
