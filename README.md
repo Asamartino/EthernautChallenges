@@ -254,3 +254,5 @@ In particular how:<br/>
 
 The function *setFirstTime* executes a delegatecall to the function *setTime* of LibraryContract. Namely, *setTime* will be
 executed in the context of the Preservation contract, i.e. it will modify slot n°0 (*timeZone1Library*) of the Preservation contract with the argument you provide. Therefore, you could change this address with the address of a malicious contract. Thus, when you call *setFristTime* again, the function *setTime* of your malicious contract will be executed in the context of the Preservation contract. By writing this function such that it modifies its slot n°2, you could in the context of the Preservation contract modify the *owner* variable (and claim ownership of this contract).
+
+### Level 17 Recovery :<br/>
