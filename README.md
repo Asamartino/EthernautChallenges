@@ -267,8 +267,5 @@ of the structure containing only the sender and the account nonce.”* <br/>
 
 To solve this level you will have to recover the address of the SimpleToken contract. You can either compute this address* or use Etherscan (we will use both approaches). Once you know this address you can use it to execute the *destroy* function (thus removing the 0.5 ether and pass this level).<br/>
  
-
-
-
-* to compute the address of the contract you need to know the creator’s address (in our case the instance address) and the nonce (in this case 1, as this contract’s creation is its first transaction). In the console use the command: *web3.utils.soliditySha3("0xd6", "0x94", instance_address, “0x01”)*, the address will be the first 20 bytes (=160 bits). For more detail, please have a look at the RLP documentation (see the video’s description for the link).
+\* to compute the address of the contract you need to know the creator’s address (in our case the instance address) and the nonce (in this case 1, as this contract’s creation is its first transaction). In the console use the command: *web3.utils.soliditySha3("0xd6", "0x94", instance_address, “0x01”)*, the address will be the first 20 bytes (=160 bits). For more detail, please have a look at the RLP documentation (see the video’s description for the link).
 
