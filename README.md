@@ -256,3 +256,19 @@ The function *setFirstTime* executes a delegatecall to the function *setTime* of
 executed in the context of the Preservation contract, i.e. it will modify slot n°0 (*timeZone1Library*) of the Preservation contract with the argument you provide. Therefore, you could change this address with the address of a malicious contract. Thus, when you call *setFristTime* again, the function *setTime* of your malicious contract will be executed in the context of the Preservation contract. By writing this function such that it modifies its slot n°2, you could in the context of the Preservation contract modify the *owner* variable (and claim ownership of this contract).
 
 ### Level 17 Recovery :<br/>
+Solidity documentation release 0.6.6:<br/>
+*“The address of an external account is determined from the public key while the address of a contract is determined 
+at the time the contract is created (it is derived from the creator address and the number of transactions sent from 
+that address, the so-called “nonce”).”* p. 11<br/>
+Ethereum yellow paper:<br/>
+*“The address of the new account is defined as being the rightmost 160 bits of the Keccak hash of the RLP encoding
+of the structure containing only the sender and the account nonce.”* <br/>
+*“The account's nonce is initially defined as one [...].”* <br/>
+
+To solve this level you will have to recover the address of the SimpleToken contract. You can either compute this address* or use Etherscan (we will use both approaches). Once you know this address you can use it to execute the *destroy* function (thus removing the 0.5 ether and pass this level).<br/>
+ 
+
+
+
+* to compute the address of the contract you need to know the creator’s address (in our case the instance address) and the nonce (in this case 1, as this contract’s creation is its first transaction). In the console use the command: *web3.utils.soliditySha3("0xd6", "0x94", instance_address, “0x01”)*, the address will be the first 20 bytes (=160 bits). For more detail, please have a look at the RLP documentation (see the video’s description for the link).
+
